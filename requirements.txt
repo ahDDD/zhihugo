@@ -1,7 +1,17 @@
+amqp==1.4.9
+anyjson==0.3.3
 appdirs==1.4.0
+billiard==3.3.0.23
+celery==3.1.18
 Django==1.10.5
 django-cors-headers==2.0.1
+django-redis==4.7.0
 djangorestframework==3.5.3
+kombu==3.0.37
+MySQL-python==1.2.5
 packaging==16.8
 pyparsing==2.1.10
+pytz==2016.10
+redis==2.10.5
 six==1.10.0
+ipython==4.2.0
