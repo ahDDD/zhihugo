@@ -25,7 +25,7 @@ SECRET_KEY = 'l2y4!@b&0ckih3!gry%)cqsv6n8m61yj_#e3t%g-o$9f62g^l5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.zhihugo.com', '119.29.20.177', '127.0.0.1', 'localhost']
 
 
 # Application definition
