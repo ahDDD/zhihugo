@@ -79,8 +79,12 @@ WSGI_APPLICATION = 'kzh.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'zhihu',
+        'USER': 'root',
+        'PASSWORD': '123321',
+        'HOST': '127.0.0.1',
+        'PORT': '3306'
     }
 }
 
@@ -122,6 +126,7 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # build static out
 STATICFILES_DIRS = [
@@ -130,3 +135,15 @@ STATICFILES_DIRS = [
 
 # global cors for dev
 CORS_ORIGIN_ALLOW_ALL = True
+
+# use redis for cache
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:5280/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+        "KEY_PREFIX": "example"
+    }
+}

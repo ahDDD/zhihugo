@@ -31,3 +31,37 @@ class SubComment(models.Model):
 
     def __str__(self):
         return self.text
+
+
+class Url(models.Model):
+    md5_url = models.CharField(max_length=500, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'url'
+
+@python_2_unicode_compatible
+class User(models.Model):
+    user_token = models.CharField(max_length=255, blank=True, null=True)
+    location = models.CharField(max_length=255, blank=True, null=True)
+    business = models.CharField(max_length=255, blank=True, null=True)
+    sex = models.CharField(max_length=255, blank=True, null=True)
+    employment = models.CharField(max_length=255, blank=True, null=True)
+    education = models.CharField(max_length=255, blank=True, null=True)
+    username = models.CharField(max_length=255, blank=True, null=True)
+    url = models.CharField(max_length=255, blank=True, null=True)
+    agrees = models.IntegerField(blank=True, null=True)
+    thanks = models.IntegerField(blank=True, null=True)
+    asks = models.IntegerField(blank=True, null=True)
+    answers = models.IntegerField(blank=True, null=True)
+    posts = models.IntegerField(blank=True, null=True)
+    followees = models.IntegerField(blank=True, null=True)
+    followers = models.IntegerField(blank=True, null=True)
+    hashid = models.CharField(db_column='hashId', max_length=255, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'user'
+
+    def __str__(self):
+        return self.username

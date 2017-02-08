@@ -5,11 +5,14 @@ import App from './App'
 import VueRouter from 'vue-router'
 import routeConfig from './router-config'
 import Element from 'element-ui'
+import DataTables from 'vue-data-tables'
 import 'element-ui/lib/theme-default/index.css'
+
 
 //加载中间件
 Vue.use(VueRouter)
 Vue.use(Element)
+Vue.use(DataTables)
 
 //定义路由
 const router = new VueRouter({

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from models import Comment, SubComment
+from models import Comment, SubComment, User
 
 class SubCommentSerializer(serializers.ModelSerializer):
 
@@ -21,3 +21,10 @@ class FaveSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = ('faves',)
+
+
+class BigVSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('user_token', 'username', 'agrees', 'thanks', 'asks', 'answers', 'posts', 'followers')

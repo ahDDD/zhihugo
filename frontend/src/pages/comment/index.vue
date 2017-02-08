@@ -194,7 +194,6 @@ export default {
         success: function(resp) {
           self.comments = resp;
         }
-
       })
     },
     submitForm: function(data) {
