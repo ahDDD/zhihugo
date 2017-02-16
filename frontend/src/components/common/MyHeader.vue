@@ -6,6 +6,7 @@
               <!--<img src="../../assets/images/vector_space_illust.svg" />-->
               <h1>知乎Go</h1>
             </router-link>
+            <span>每天一次</span>
         </el-col>
         <el-col :span="16" class="nav">
           <el-menu theme="dark" default-active="bigv" mode="horizontal" :router="true" class="high">
@@ -14,6 +15,9 @@
             </el-menu-item>
             <el-menu-item index="comment" :class="{'isActive': !active}">
                 留言板
+            </el-menu-item>
+            <el-menu-item index="about" :class="{'isActive': !active}">
+                关于这里
             </el-menu-item>
           </el-menu>
         </el-col>
@@ -28,8 +32,11 @@ export default {
         active: true
     }
   },
+  created: function() {},
   computed: {},
-  mounted () {},
+  mounted () {
+      this.$router.push('/bigv')
+  },
   methods: {},
   components: {}
 }
@@ -46,8 +53,8 @@ header {
   background-color: #324057;
 }
 
-header h1 a {
-  display: block;
+header h1 {
+  display: inline;
 }
 
 .el-menu {
@@ -63,5 +70,11 @@ header h1 a {
 
 .menu {
   background-color: #F9FAFC;
+}
+
+.el-col span {
+    color: white;
+    padding-left: 10px;
+    display: inline-block;
 }
 </style>

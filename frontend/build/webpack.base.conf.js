@@ -12,7 +12,8 @@ var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
 
 module.exports = {
   entry: {
-    app: './src/main.js'
+    app: './src/main.js',
+    vendor: ['element-ui']
   },
   output: {
     path: config.build.assetsRoot,
@@ -74,5 +75,6 @@ module.exports = {
   },
   externals: {
     'reqwest': true
+    // 'vue-router': true
   }
 }

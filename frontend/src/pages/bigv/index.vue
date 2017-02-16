@@ -1,7 +1,12 @@
 <template lang="html">
     <div class="ui container">
-        <data-tables :data='tableData' :has-action-col='false' :actions-def='getActionsDef()' @row-click='rowClick' :col-not-row-click='["user_token"]'>
-        <el-table-column prop="username" label="用户名"></el-table-column>
+        <data-tables :data='tableData' :has-action-col='false' :actions-def='getActionsDef()' @row-click='rowClick' :col-not-row-click='["user_token"]' action-col-width='53'>
+        <el-table-column label="#" fixed>
+            <template scope="scope">
+                {{ scope.$index + indexCount }}
+            </template>
+        </el-table-column>
+        <el-table-column prop="username" label="用户名" fixed></el-table-column>
         <el-table-column prop="agrees" label="获赞同" sortable="custom"></el-table-column>
         <el-table-column prop="followers" label="被关注" sortable="custom"></el-table-column>
         <el-table-column prop="thanks" label="被感谢" sortable="custom"></el-table-column>
@@ -9,15 +14,16 @@
         <el-table-column prop="posts" label="分享数" sortable="custom"></el-table-column>
         <el-table-column prop="user_token" label="传送门">
             <template scope="scope">
-              <el-button type="info" size="small" @click="handleEdit(scope.$index, scope.row)">走起</el-button>
-            </template>
+<el-button type="info" size="small" @click="handleEdit(scope.$index, scope.row)">
+  走起</el-button>
+</template>
         </el-table-column>
       </data-tables>
     </div>
 </template>
 
 <script>
-import DataTables from '../../components/common/DataTable.vue'
+import DataTables from 'vue-data-tables'
 import reqwest from 'reqwest'
 
 
@@ -25,13 +31,18 @@ export default {
   data() {
     return {
       tableData: [],
-      dataOpt: 'followers'
+      dataOpt: 'followers',
+      currentPage: 0
     }
   },
   created() {
     this.getBigV()
   },
-  computed: {},
+  computed: {
+      indexCount() {
+        return (this.$children[0].currentPage - 1) * 10 + 1
+    }
+  },
   mounted() {},
   methods: {
     getBigV: function() {
@@ -64,51 +75,46 @@ export default {
       return {
         width: 10,
         def: [{
-          name: '关注Top100',
+          name: '关注Top500',
           handler() {
-            if(self.dataOpt=='followers'){
-                self.$message('现在已经是了')
-            }else{
-                self.dataOpt='followers'
-                self.getBigV();
+            if (self.dataOpt == 'followers') {
+              self.$message('现在已经是了')
+            } else {
+              self.dataOpt = 'followers'
+              self.getBigV();
             }
           },
           icon: ''
-      },{
-        name: '赞同Top100',
-        handler() {
-          if(self.dataOpt=='agrees'){
+        }, {
+          name: '赞同Top500',
+          handler() {
+            if (self.dataOpt == 'agrees') {
               self.$message('现在已经是了')
-          }else{
-              self.dataOpt='agrees'
+            } else {
+              self.dataOpt = 'agrees'
               self.getBigV();
-          }
-        },
-        icon: ''
-    },{
-      name: '感谢Top100',
-      handler() {
-        if(self.dataOpt=='thanks'){
-            self.$message('现在已经是了')
-        }else{
-            self.dataOpt='thanks'
-            self.getBigV();
-        }
-      },
-      icon: ''
-    }]
+            }
+          },
+          icon: ''
+        }, {
+          name: '感谢Top500',
+          handler() {
+            if (self.dataOpt == 'thanks') {
+              self.$message('现在已经是了')
+            } else {
+              self.dataOpt = 'thanks'
+              self.getBigV();
+            }
+          },
+          icon: ''
+        }]
       }
     },
-    rowClick: function(row) {
-
-    },
+    rowClick: function(row) {},
     handleEdit(index, row) {
       window.open(`https://www.zhihu.com/people/${row.user_token}`)
-    },
+    }
   },
   components: {}
 }
 </script>
-
-<style lang="css">
-</style>

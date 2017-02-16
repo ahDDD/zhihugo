@@ -35,16 +35,16 @@ class SubCommentPost(generics.CreateAPIView):
 
 
 class BigVListByFollowers(generics.ListAPIView):
-    queryset = User.objects.order_by('-followers')[0:100]
+    queryset = User.objects.order_by('-followers')[0:500]
     serializer_class = BigVSerializer
 
 
 class BigVListByAgrees(generics.ListAPIView):
-    queryset = User.objects.order_by('-agrees')[0:100]
+    queryset = User.objects.order_by('-agrees')[0:500]
     serializer_class = BigVSerializer
 
 
 class BigVListByThanks(generics.ListAPIView):
-    queryset = User.objects.order_by('-thanks')[0:100]
+    queryset = User.objects.order_by('-thanks')[0:500]
     serializer_class = BigVSerializer
 
