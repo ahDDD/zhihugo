@@ -7,7 +7,7 @@
 </template>
 
 <style>
-.ui.container.main {
+.main {
   padding-top: 35px;
   padding-bottom: 35px;
 }

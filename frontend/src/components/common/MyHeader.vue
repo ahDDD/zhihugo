@@ -9,15 +9,15 @@
             <span>每天一次</span>
         </el-col>
         <el-col :span="16" class="nav">
-          <el-menu theme="dark" default-active="bigv" mode="horizontal" :router="true" class="high">
-            <el-menu-item index="bigv" :class="{'isActive': active}">
-                大v排行
+          <el-menu theme="dark" default-active="/bigv" mode="horizontal" :router="true" class="high">
+            <el-menu-item index="/bigv">
+                用户排行
             </el-menu-item>
-            <el-menu-item index="comment" :class="{'isActive': !active}">
+            <el-menu-item index="/comment">
                 留言板
             </el-menu-item>
-            <el-menu-item index="about" :class="{'isActive': !active}">
-                关于这里
+            <el-menu-item index="/about">
+                关于本站
             </el-menu-item>
           </el-menu>
         </el-col>
@@ -29,13 +29,15 @@
 export default {
   data () {
     return {
-        active: true
     }
   },
   created: function() {},
   computed: {},
   mounted () {
-      this.$router.push('/bigv')
+      // 如果当前路由是'/'，则自动转跳到'/biv'
+      if(this.$router.currentRoute.path == '/'){
+          this.$router.push('/bigv')
+      }
   },
   methods: {},
   components: {}

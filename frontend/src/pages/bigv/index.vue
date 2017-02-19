@@ -1,7 +1,6 @@
 <template lang="html">
-    <div class="ui container">
-        <data-tables :data='tableData' :has-action-col='false' :actions-def='getActionsDef()' @row-click='rowClick' :col-not-row-click='["user_token"]' action-col-width='53'>
-        <el-table-column label="#" fixed>
+    <data-tables :data='tableData' :has-action-col='false' :actions-def='getActionsDef()' @row-click='rowClick' :col-not-row-click='["user_token"]' action-col-width='53'>
+        <el-table-column label="#" width="61px" fixed >
             <template scope="scope">
                 {{ scope.$index + indexCount }}
             </template>
@@ -12,14 +11,12 @@
         <el-table-column prop="thanks" label="被感谢" sortable="custom"></el-table-column>
         <el-table-column prop="answers" label="回答数" sortable="custom"></el-table-column>
         <el-table-column prop="posts" label="分享数" sortable="custom"></el-table-column>
-        <el-table-column prop="user_token" label="传送门">
+        <el-table-column prop="user_token" label="传送门" width="80px">
             <template scope="scope">
-<el-button type="info" size="small" @click="handleEdit(scope.$index, scope.row)">
-  走起</el-button>
-</template>
+                <el-button type="info" size="small" @click="handleEdit(scope.$index, scope.row)">Go</el-button>
+            </template>
         </el-table-column>
-      </data-tables>
-    </div>
+    </data-tables>
 </template>
 
 <script>
@@ -39,8 +36,8 @@ export default {
     this.getBigV()
   },
   computed: {
-      indexCount() {
-        return (this.$children[0].currentPage - 1) * 10 + 1
+    indexCount() {
+      return (this.$children[0].currentPage - 1) * 10 + 1
     }
   },
   mounted() {},
@@ -73,7 +70,7 @@ export default {
     getActionsDef: function() {
       let self = this
       return {
-        width: 10,
+        width: 19,
         def: [{
           name: '关注Top500',
           handler() {
@@ -118,3 +115,6 @@ export default {
   components: {}
 }
 </script>
+
+<style>
+</style>

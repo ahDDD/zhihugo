@@ -61,7 +61,10 @@ module.exports = {
         limit: 10000,
         name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
       }
-    }]
+    }, {
+      test: /\.md$/,
+      loader: 'vue-markdown-loader'
+    }, ]
   },
   vue: {
     loaders: utils.cssLoaders({
@@ -74,7 +77,9 @@ module.exports = {
     ]
   },
   externals: {
-    'reqwest': true
-    // 'vue-router': true
+    'reqwest': true,
+    'marked': true,
+    'highlight.js': true
+      // 'vue-router': true
   }
 }
