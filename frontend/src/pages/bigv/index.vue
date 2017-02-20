@@ -37,7 +37,7 @@ export default {
   },
   computed: {
     indexCount() {
-      return (this.$children[0].currentPage - 1) * 10 + 1
+      return (this.$children[0].currentPage - 1) * this.$children[0].internalPageSize + 1
     }
   },
   mounted() {},
@@ -107,7 +107,10 @@ export default {
         }]
       }
     },
-    rowClick: function(row) {},
+    rowClick: function(row) {
+        console.log(this.$children[0]);
+        console.log(row);
+    },
     handleEdit(index, row) {
       window.open(`https://www.zhihu.com/people/${row.user_token}`)
     }

@@ -6,7 +6,7 @@
 
 微信: Kirio6
 
-[知乎 - Kaiser](https://www.zhihu.com/people/Kirio)
+[知乎 - Kirio](https://www.zhihu.com/people/Kirio)
 
 ### d
 [mail](d664216@gmail.com)

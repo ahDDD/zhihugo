@@ -9,7 +9,7 @@
             <span>每天一次</span>
         </el-col>
         <el-col :span="16" class="nav">
-          <el-menu theme="dark" default-active="/bigv" mode="horizontal" :router="true" class="high">
+          <el-menu theme="dark" :default-active="path" mode="horizontal" :router="true" class="high">
             <el-menu-item index="/bigv">
                 用户排行
             </el-menu-item>
@@ -29,6 +29,7 @@
 export default {
   data () {
     return {
+        path: '/bigv'
     }
   },
   created: function() {},
@@ -37,9 +38,16 @@ export default {
       // 如果当前路由是'/'，则自动转跳到'/biv'
       if(this.$router.currentRoute.path == '/'){
           this.$router.push('/bigv')
+      };
+      this.updatePath();
+  },
+  methods: {
+      updatePath() {
+          //一级路由更新当前menu选项
+          var topPath = '/' + this.$router.currentRoute.path.split('/')[1];
+          this.path = topPath
       }
   },
-  methods: {},
   components: {}
 }
 </script>
