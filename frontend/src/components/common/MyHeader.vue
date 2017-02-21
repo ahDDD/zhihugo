@@ -6,7 +6,7 @@
               <!--<img src="../../assets/images/vector_space_illust.svg" />-->
               <h1>知乎Go</h1>
             </router-link>
-            <span>每天一次</span>
+            <span>每日一更</span>
         </el-col>
         <el-col :span="16" class="nav">
           <el-menu theme="dark" :default-active="path" mode="horizontal" :router="true" class="high">
