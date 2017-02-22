@@ -45,7 +45,7 @@ export default {
     getBigV: function() {
       var self = this;
       reqwest({
-        url: `http://127.0.0.1:8000/api/bigv/${self.dataOpt}/`,
+        url: `/api/bigv/${self.dataOpt}/`,
         type: 'json',
         methods: 'get',
         error: function(err) {

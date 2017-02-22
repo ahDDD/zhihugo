@@ -187,7 +187,7 @@ export default {
     getComment: function() {
       var self = this;
       reqwest({
-        url: 'http://127.0.0.1:8000/api/comment/',
+        url: '/api/comment/',
         type: 'json',
         method: 'get',
         error: function(err) {},
@@ -199,7 +199,7 @@ export default {
     submitForm: function(data) {
       var self = this;
       reqwest({
-        url: 'http://127.0.0.1:8000/api/comment/',
+        url: '/api/comment/',
         type: 'json',
         method: 'post',
         data: {
@@ -230,7 +230,7 @@ export default {
     submitReplyForm: function(data, comment) {
       var self = this;
       reqwest({
-        url: 'http://127.0.0.1:8000/api/reply/',
+        url: '/api/reply/',
         type: 'json',
         method: 'post',
         data: {
@@ -258,7 +258,7 @@ export default {
     },
     postFave: function(comment) {
       reqwest({
-        url: `http://127.0.0.1:8000/api/fave/${comment.id}/`,
+        url: `/api/fave/${comment.id}/`,
         type: 'json',
         method: 'put',
         data: {
