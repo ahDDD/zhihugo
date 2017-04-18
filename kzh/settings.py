@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 Django settings for kzh project.
 
@@ -11,9 +12,22 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+import djcelery
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+djcelery.setup_loader()
+BROKER_URL = 'redis://localhost:5280/1' # broker使用reids
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler' # 定时任务
+CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
+CELERY_ENABLE_UTC = False # 不是用UTC
+CELERY_TIMEZONE = 'Asia/Shanghai'
+CELERY_TASK_RESULT_EXPIRES = 10 #任务结果的时效时间
+CELERYD_LOG_FILE = BASE_DIR + "/logs/celery/celery.log" # log路径
+CELERYBEAT_LOG_FILE = BASE_DIR + "/logs/celery/beat.log" # beat log路径
+CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml'] # 允许的格式
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -37,7 +51,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'backend'
+    'backend',
+    'djcelery',
+    'kombu.transport.django',
 ]
 
 MIDDLEWARE = [
@@ -147,3 +163,7 @@ CACHES = {
         "KEY_PREFIX": "example"
     }
 }
+
+# Celery
+# CELERY_BROKER_URL = 'redis://localhost:6379/1'
+
